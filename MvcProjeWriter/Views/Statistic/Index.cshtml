@@ -1,0 +1,77 @@
+@{
+    ViewBag.Title = "İstatistikler";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<section class="content-header">
+    <h1>İstatistik Paneli</h1>
+</section>
+
+<section class="content">
+    <div class="row">
+        <!-- 1. Kategori Sayısı -->
+        <div class="col-lg-3 col-6">
+            <div class="small-box bg-info">
+                <div class="inner">
+                    <h3>@ViewBag.KategoriSayisi</h3>
+                    <p>Toplam Kategori</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-layer-group"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Yazılım Başlık Sayısı -->
+        <div class="col-lg-3 col-6">
+            <div class="small-box bg-success">
+                <div class="inner">
+                    <h3>@ViewBag.YazilimBaslikSayisi</h3>
+                    <p>"Yazılım" Başlık Sayısı</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-code"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. 'A' Harfi Geçen Yazar Sayısı -->
+        <div class="col-lg-3 col-6">
+            <div class="small-box bg-warning">
+                <div class="inner">
+                    <h3>@ViewBag.AIcerenYazarSayisi</h3>
+                    <p>'A' Harfi Olan Yazarlar</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-user-edit"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. En Popüler Kategori -->
+        <div class="col-lg-3 col-6">
+            <div class="small-box bg-danger">
+                <div class="inner">
+                    <h4>@ViewBag.EnPopulerKategoriAdi</h4>
+                    <p>En Popüler Kategori</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-fire"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. Aktif / Pasif Kategori Farkı -->
+        <div class="col-lg-3 col-6">
+            <div class="small-box bg-secondary">
+                <div class="inner">
+                    <h3>@ViewBag.KategoriDurumFarki</h3>
+                    <p>Aktif / Pasif Kategori Farkı</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-balance-scale"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
