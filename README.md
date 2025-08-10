@@ -1,4 +1,5 @@
 MvcProjeWriter
+
 ASP.NET MVC (katmanlı mimari) ile geliştirilmiş “Yazar Paneli / Mesajlaşma” uygulaması. Proje; EntityLayer, DataAccessLayer, BusinessLayer ve MvcProjeWriter (UI) katmanlarından oluşur. 
 
 Özellikler
