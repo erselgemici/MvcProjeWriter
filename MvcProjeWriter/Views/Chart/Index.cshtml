@@ -1,0 +1,47 @@
+@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="text-center mt-4">Kategoriye Göre İçerik Sayısı</h2>
+<div id="chart_div" style="width: 100%; height: 500px;"></div>
+
+@section Scripts {
+    <!-- Google Charts -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script>
+        google.charts.load('current', { packages: ['corechart'] });
+
+        $(document).ready(function () {
+            $.ajax({
+                url: '/Chart/CategoryChart',
+                type: 'GET',
+                dataType: 'json',
+                success: function (result) {
+                    google.charts.setOnLoadCallback(function () {
+                        drawChart(result);
+                    });
+                }
+            });
+        });
+
+        function drawChart(result) {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Kategori');
+            data.addColumn('number', 'İçerik Sayısı');
+
+            $.each(result, function (i, item) {
+                data.addRow([item.CategoryName, item.CategoryCount]);
+            });
+
+            var options = {
+                title: 'Kategoriye Göre İçerik Sayısı',
+                is3D: true,
+                legend: { position: 'right' }
+            };
+
+            var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+            chart.draw(data, options);
+        }
+    </script>
+}

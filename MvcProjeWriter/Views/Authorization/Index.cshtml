@@ -1,0 +1,56 @@
+@using EntityLayer.Concrete
+@model List<Admin>
+@{
+    ViewBag.Title = "Admin Listesi";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="text-center mt-4">Admin Listesi</h2>
+
+<table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th>#</th>
+            <th>Kullanıcı Adı</th>
+            <th>Yetki</th>
+            <th>Durum</th>
+            <th>Pasif Yap</th>
+            <th>Yetkisini Değiştir</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.AdminID</td>
+                <td>@item.AdminUserName</td>
+                <td>@item.AdminRole</td>
+                <td>
+                    @if (item.AdminStatus)
+                    {
+                        <span class="badge badge-success">Aktif</span>
+                    }
+                    else
+                    {
+                        <span class="badge badge-secondary">Pasif</span>
+                    }
+                </td>
+                <td>
+                    @if (item.AdminStatus)
+                    {
+                        <a href="/Authorization/ChangeStatus/@item.AdminID" class="btn btn-warning btn-sm">Pasif Yap</a>
+                    }
+                    else
+                    {
+                        <button class="btn btn-secondary btn-sm" disabled title="Zaten pasif durumda">Pasif</button>
+                    }
+                </td>
+                <td>
+                    <a href="/Authorization/EditAdmin/@item.AdminID" class="btn btn-info btn-sm">Yetkisini Değiştir</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="/Authorization/AddAdmin/" class="btn btn-success">Yeni Admin Tanımla</a>
